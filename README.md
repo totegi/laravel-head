@@ -1,7 +1,7 @@
 laravel-head
 ============
 
-This package automate and facilitate management of the `<head></head>` section for your HTML5 layouts with Laravel. It provides utilities for:
+This package automate and facilitate management of the `<head></head>` section for your HTML5 layouts with Laravel 4. It provides utilities for:
  - Meta tags.
  - Link tags.
  - Stylesheets.

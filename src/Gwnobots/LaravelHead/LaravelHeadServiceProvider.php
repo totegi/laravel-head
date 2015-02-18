@@ -23,6 +23,15 @@ class LaravelHeadServiceProvider extends ServiceProvider {
 +		{
 			$this->package('gwnobots/laravel-head');
 		}
+		else 
+		{
+			$configPath = __DIR__.'/../../config/config.php';
+			$this->publishes([
+				$configPath => config_path('laraver-head.php'),
+			]);
+			
+			$this->mergeConfigFrom($configPath, 'laravel-head');
+		}
 	}
 
 	/**

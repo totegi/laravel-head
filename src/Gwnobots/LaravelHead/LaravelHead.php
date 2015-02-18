@@ -4,6 +4,7 @@ use App;
 use Config;
 use File;
 use URL;
+use Illuminate\Foundation\Application;
  
 class LaravelHead {
 
@@ -76,6 +77,13 @@ class LaravelHead {
 	 * @var array
 	 */ 
 	protected $misc = array();
+	
+	/**
+	 * Package name for accessing config
+	 * 
+	 * @var string
+	 */ 
+	protected $configNamePrefix = 'laravel-head';
 
 
 /* =============================
@@ -88,6 +96,15 @@ class LaravelHead {
 		$this->meta['name'] = array();
 		$this->meta['http-equiv'] = array();
 		$this->meta['property'] = array();
+		
+		if(preg_match('/^4/',Application::VERSION))
+		{
+			$this->configNamePrefix .= '::';
+		}
+		else
+		{
+			$this->configNamePrefix .= '.';
+		}
 	}
 
 
@@ -118,15 +135,15 @@ class LaravelHead {
 	protected function getConfig($item)
 	{
 		// Get config item value for a custom layout if it exists, even if blank
-		if (!is_null(Config::get('laravel-head::'.$this->layout.'.'.$item)))
+		if (!is_null(Config::get($this->configNamePrefix.$this->layout.'.'.$item)))
 		{
-			return Config::get('laravel-head::'.$this->layout.'.'.$item);
+			return Config::get($this->configNamePrefix.$this->layout.'.'.$item);
 		}
 
 		// Fallback to default config item value if custom one does exist
 		else
 		{
-			return Config::get('laravel-head::'.$item);
+			return Config::get($this->configNamePrefix.$item);
 		}
 	}
 
@@ -143,15 +160,15 @@ class LaravelHead {
 	protected function setConfig($item, $value)
 	{
 		// Set config item value for a custom layout if it exists
-		if (!is_null(Config::get('laravel-head::'.$this->layout.'.'.$item)))
+		if (!is_null(Config::get($this->configNamePrefix.$this->layout.'.'.$item)))
 		{
-			return Config::set('laravel-head::'.$this->layout.'.'.$item, $value);
+			return Config::set($this->configNamePrefix.$this->layout.'.'.$item, $value);
 		}
 
 		// Set default config item value if custom one does exist
 		else
 		{
-			return Config::set('laravel-head::'.$item, $value);
+			return Config::set($this->configNamePrefix.$item, $value);
 		}
 	}
 

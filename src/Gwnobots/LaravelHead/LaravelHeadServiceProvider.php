@@ -20,7 +20,7 @@ class LaravelHeadServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		if(preg_match('/^4/',Application::VERSION))
-+		{
+		{
 			$this->package('gwnobots/laravel-head');
 		}
 		else 

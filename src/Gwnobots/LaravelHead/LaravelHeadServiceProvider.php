@@ -27,7 +27,7 @@ class LaravelHeadServiceProvider extends ServiceProvider {
 		{
 			$configPath = __DIR__.'/../../config/config.php';
 			$this->publishes([
-				$configPath => config_path('laraver-head.php'),
+				$configPath => config_path('laravel-head.php'),
 			]);
 			
 			$this->mergeConfigFrom($configPath, 'laravel-head');

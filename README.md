@@ -1,6 +1,12 @@
 laravel-head
 ============
 
+## Abandoned Package
+
+This package is not maintained anymore. You can find more recent packages dedicated to managing meta tags in Laravel [here](http://packalyst.com/s/meta).
+
+## Contents
+
 This package automate and facilitate management of the `<head></head>` section for your HTML5 layouts with Laravel 4. It provides utilities for:
  - Meta tags.
  - Link tags.

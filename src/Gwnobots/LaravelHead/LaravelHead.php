@@ -35,6 +35,13 @@ class LaravelHead {
 	 * @var string
 	 */ 
 	protected $description;
+	
+	/**
+	 * The value for title tag
+	 *
+	 * @var string
+	 */
+	protected $canonical;
 
 	/**
 	 * The name of favicon file(s)
@@ -798,6 +805,9 @@ class LaravelHead {
 
 		// Add stylesheets link tags
 		$this->addStyleSheets();
+		
+		//Add canonical link tag
+		$this->addCanonical();
 
 		foreach ($this->link as $link)
 		{
@@ -870,6 +880,29 @@ class LaravelHead {
 	{
 		$this->addLink(array(array($rel, $href, $type, $attr, $cond)));
 	}
+	
+	/**
+	 * Set canonical link tag.
+	 *
+	 * @return void
+	 */
+	public function canonical($href, $type = '', $attr = array(), $cond = '')
+	{
+		$this->canonical = array(array('canonical', $href, $type, $attr, $cond));
+	}
+	
+	/**
+	 * Render canonical link tag.
+	 *
+	 * @return void
+	 */
+	protected function addCanonical()
+	{
+		if(!empty($this->canonical)){
+			$this->addLink($this->canonical);
+		}
+	}
+	
 
 	/**
 	 * Register link tags for favicon.

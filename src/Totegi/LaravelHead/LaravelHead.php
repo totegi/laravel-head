@@ -1,4 +1,4 @@
-<?php namespace Gwnobots\LaravelHead;
+<?php namespace Totegi\LaravelHead;
 
 use App;
 use Config;

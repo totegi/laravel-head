@@ -21,7 +21,7 @@ class LaravelHeadServiceProvider extends ServiceProvider {
 	{
 		if(preg_match('/^4/',Application::VERSION))
 		{
-			$this->package('gwnobots/laravel-head');
+			$this->package('totegi/laravel-head');
 		}
 		else 
 		{
@@ -49,7 +49,7 @@ class LaravelHeadServiceProvider extends ServiceProvider {
 		$this->app->booting(function()
 		{
 			$loader = \Illuminate\Foundation\AliasLoader::getInstance();
-			$loader->alias('Head', 'Gwnobots\LaravelHead\LaravelHeadFacade');
+			$loader->alias('Head', 'Totegi\LaravelHead\LaravelHeadFacade');
 		});
 	}
 

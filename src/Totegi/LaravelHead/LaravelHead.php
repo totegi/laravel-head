@@ -397,9 +397,6 @@ class LaravelHead {
 		// Initialize string
 		$html = '';
 
-		// Prevent robots from crawling and indexing the site if not in production mode
-		$this->addRobots();
-
 		// Force IE compatibility if option is active
 		$this->addIeEdge();
 
@@ -457,20 +454,6 @@ class LaravelHead {
 	public function addOneMeta($type, $value, $content)
 	{
 		$this->addMeta(array($type => array($value => $content)));
-	}
-
-	/**
-	 * Register robots meta tag.
-	 *
-	 * @return void
-	 */ 
-	protected function addRobots()
-	{
-		// Check for production mode
-		if (!App::environment('production'))
-		{
-			$this->addOneMeta('name', 'robots', 'none');
-		}
 	}
 
 	/**
